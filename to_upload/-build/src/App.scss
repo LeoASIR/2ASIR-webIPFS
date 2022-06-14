@@ -1,0 +1,16 @@
+.App{
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #222222;
+  background-image: url("../public/images/fondo2.png");
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-size: cover;
+
+  .content-wrapper{
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,92 @@
+.form_register {
+    width: 300px;
+    background-color: #CCCCCC16;
+    border-radius: 15px;
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    .header {
+      position: relative;
+      top: -80px;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90px;
+      width: 90px;
+      border-radius: 75px;
+      background-image: linear-gradient(to right, #2B0003, #030914, #030914, #2B0003);
+      border: solid 2px #0F4BB7;
+      margin-bottom: -90px;
+    }
+  
+    .register_wrapper {
+      margin-top: 1rem;
+      text-align: center;
+  
+      .label-register{
+        color: #fff;
+        font-size: 2rem;
+        font-family: "Sora", sans-serif;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+      }
+  
+      input {
+        background-image: linear-gradient(to right, #2B0003, #030914, #030914, #2B0003);
+        border: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 15px;
+        color: #fff;
+        outline: none;
+      }
+  
+      .input_wrapper {
+        background-image: linear-gradient(to right, #E1000F, #0F4BB7, #0F4BB7, #E1000F);
+        width: 100%;
+        height: 50px;
+        margin-bottom: 20px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        .input_item {
+          height: calc(99% - 4px);
+          width: calc(99% - 4px);
+          border-radius: 30px;
+        }
+      }
+    }
+  
+    .input_item::placeholder {
+      color: #777;
+    }
+  
+    .active {
+      display: flex;
+      justify-content: center;
+  
+      .btn {
+        margin-top: 0.5rem;
+        font-family: 'Jura', sans-serif;
+        border: 2px solid #0F4BB7;
+        color: #777;
+        padding: 0 20px;
+        text-align: center;
+        line-height: 2rem;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: .2s;
+  
+        &:hover {
+          background-color: #0F4BB7;
+          color: #fff;
+        }
+      }
+    }
+}

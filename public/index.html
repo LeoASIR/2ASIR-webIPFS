@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree&display=swap&family=Orbitron:wght@600&display=swap&family=Jura:wght@700&display=swap&family=Sora:wght@400&display=swap&family=Source+Code+Pro:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href="images/logo/icono.png">
+    <script src="./ipfs.min.js"></script>
+    <style>
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+       
+      ::-webkit-scrollbar-thumb {
+        background: #071b32; 
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+      }
+      </style>
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Leogub IPFS</title>
+    <link rel="icon" href="./images/icono.svg" type="image/svg+xml">
+    <link rel="icon" href="./images/icono.png" type="image/png">
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+      <script>
+
+        // Ignorar errores
+        // console.error = (...data) => {}
+
+        window._chat_status = {}
+        const repoName = "ok" + Math.random();
+
+        function waitForIPFSReady() {
+          return new Promise((resolve) => {
+            function tryReady() {
+              if (window.ipfsNode) {
+                console.log("IPFS Iniciado")
+                // Si ya está inicializado, resolvemos la promesa
+                resolve()
+              } else {
+                console.log("Esperando a que ipfs este iniciado...")
+                // Llamamos dentro de 0.5 segundos para
+                // comprobar si ya está
+                setTimeout(tryReady, 500);
+              }
+            }
+            tryReady();
+          });
+        }
+
+        // Cargamos IPFS desde el index para tener una sola instancia,
+        // ya que si generamos varias instancias da error y nos
+        // asigna ids diferentes. Solo queremos un id
+        window.getIPFS = async () => {
+
+          // Utilizamos window.ipfsNode para almacenar una sola instancia.
+          // Si ya existe, retornamos esta
+          if (window.ipfsInitialized) {
+            // ya se esta inicializando IPFS... Pero esta funcion
+            // ha sido llamada desde otra parte del codigo, asi 
+            // que la esperamos con una promesa
+            await waitForIPFSReady()
+            if (window.ipfsNode) {
+              return [ window.ipfsNode, window.ipfsId];
+            }
+          }
+          window.ipfsInitialized = true
+          window.ipfsNode = await Ipfs.create({
+                repo: repoName, 
+                relay: {
+                    enabled: true,
+                    hop: {
+                        enabled: true
+                    }
+                },
+                config: {
+                    Addresses: {
+                        Swarm: [ 
+                          '/dns4/star.thedisco.zone/tcp/9090/wss/p2p-webrtc-star', 
+                          '/dns6/star.thedisco.zone/tcp/9090/wss/p2p-webrtc-star' 
+                        ]
+                    },
+                }});
+          window.ipfsId = await window.ipfsNode.id();
+          return [ window.ipfsNode, window.ipfsId];
+        }
+      </script>
+  </body>
+</html>

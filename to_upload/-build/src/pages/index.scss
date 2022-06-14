@@ -1,0 +1,63 @@
+
+#presentacion {
+    height: 20rem ;
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    align-items: center; /*alinea los items dentro del contenedor*/
+    justify-content: center; /*espaciado dentro de su contenedor*/
+    .leo {
+        text-align: center;
+        color: #DDD;
+        margin: 0;
+        width: 20rem;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 10rem;
+        line-height: 9rem;
+        transition: 0.3s;
+      
+        &:hover {
+          transition: 0.8s;
+          text-shadow: 0 0 30px #0FFFFF, 0 0 40px #00FFFF44, 0 0 60px #00FFFF66;
+          cursor: default;
+        }
+    }
+}
+  
+  .nproyecto {
+    margin: 0;
+    text-align: center;
+    font-family: 'Jura', sans-serif;
+    font-size: 6rem;
+    line-height: 6rem;
+    color: #0F4BB7;
+  }
+  
+  .titulopro {
+    margin: 0;
+    text-align: center;
+    font-family: 'Jura', sans-serif;
+    font-size: 3rem;
+    line-height: 3rem;
+    color: #fff
+  }
+
+
+  @media (max-width: 740px) {
+   
+    .leo {
+        font-size: 9rem;
+        line-height: 8rem;
+    }
+  
+    
+    .nproyecto {
+      font-size: 4rem;
+      line-height: 4rem;
+    }
+    
+    .titulopro {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
+  }

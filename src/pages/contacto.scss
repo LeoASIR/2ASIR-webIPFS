@@ -1,0 +1,31 @@
+.form_wrapper{
+    color: #FFF;
+    .header{
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .present{
+        text-align: justify;
+        margin: 0 150px 30px 150px;
+    }
+
+    .enlaces_wrapper{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        a{
+            text-decoration: none;
+            color:#FFF;
+        }
+        .item-enlace{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+.proyecto {
+    display: flex;
+    min-height: calc(100vh - 100px);
+    flex-direction: column;
+    max-width: 80vw;
+    color: #FFF;
+
+    p {
+        font-size: 12px;
+    }
+
+}
